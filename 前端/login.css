@@ -1,0 +1,157 @@
+/* 登录页面样式 */
+:root {
+  --primary-color: #ff79c6;
+  --primary-dark: #e64980;
+  --secondary-color: #f06292;
+  --accent-color: #ff5252;
+  --light-color: #fff9fb;
+  --dark-color: #2c2c2c;
+  --box-shadow: 0 5px 15px rgba(242, 97, 170, 0.2);
+}
+
+.login-body {
+  min-height: 100vh;
+  font-family: 'Microsoft YaHei', sans-serif;
+  background: linear-gradient(135deg, #ffe6f2 0%, #ffcee0 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-card {
+  max-width: 420px;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(240, 98, 146, 0.15);
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.95);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* 注册卡片额外样式 */
+.register-card {
+  max-width: 480px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-header h1 {
+  color: var(--primary-dark);
+  font-family: 'STXingkai', 'AR PL UKai CN', sans-serif;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(255, 121, 198, 0.2);
+}
+
+/* 密码强度指示器 */
+.password-strength {
+  height: 5px;
+  border-radius: 5px;
+  margin-top: 5px;
+  background-color: #f0f0f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.password-strength-bar {
+  height: 100%;
+  border-radius: 5px;
+  width: 0;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.weak {
+  width: 33%;
+  background-color: #f44336;
+}
+
+.medium {
+  width: 66%;
+  background-color: #ff9800;
+}
+
+.strong {
+  width: 100%;
+  background-color: #4caf50;
+}
+
+/* 心形背景动画 */
+.hearts-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  background-color: rgba(255, 121, 198, 0.3);
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  animation: float 15s linear infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(255, 121, 198, 0.3);
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  top: 0;
+  left: -10px;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-100vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* 响应式调整 */
+@media (max-width: 640px) {
+  .login-card {
+    width: 90%;
+    padding: 1.5rem;
+  }
+}
+
+/* 登录按钮点击效果 */
+#login-btn:active,
+#register-btn:active {
+  transform: translateY(2px);
+}

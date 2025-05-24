@@ -1,0 +1,771 @@
+/* 基础变量 */
+:root {
+  --primary: #ff6b81;
+  --primary-dark: #ff4757;
+  --secondary: #ff9ff3;
+  --text: #2f3542;
+  --light: #f1f2f6;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 全局样式 */
+body {
+  font-family: 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-color: #fff5f6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 导航栏样式 */
+.navbar {
+  background-color: #fff;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo h1 {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-item {
+  color: var(--text);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+  color: var(--primary);
+}
+
+/* 用户信息和下拉菜单 */
+.user-info {
+  position: relative;
+}
+
+.user-avatar {
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  min-width: 150px;
+  display: none;
+  z-index: 10;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--dark-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f9f9f9;
+  color: var(--primary-color);
+}
+
+/* 主视觉区域 */
+.hero-section {
+  height: 85vh;
+  background: linear-gradient(135deg, #ffe6eb 0%, #ffb8d2 100%);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+
+/* 心形动画 */
+.hearts-animation {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  bottom: -100px;
+  opacity: 0;
+  color: rgba(255, 107, 129, 0.6);
+  animation: floatUp 5s ease-in infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translateY(-100vh) scale(1.5) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 通用板块标题 */
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--primary);
+  border-radius: 10px;
+}
+
+/* 礼物卡片 */
+.gift-card {
+  perspective: 1000px;
+  height: 400px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  box-shadow: var(--shadow);
+  border-radius: 12px;
+}
+
+.gift-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+}
+
+.card-front {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-front img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.card-front h3 {
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.card-front .price {
+  color: var(--primary-dark);
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: auto;
+  padding-bottom: 1rem;
+}
+
+.card-back {
+  background-color: var(--secondary);
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.card-back p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.wishlist-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: white;
+  color: var(--primary-dark);
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.wishlist-btn:hover {
+  transform: scale(1.05);
+}
+
+.wishlist-btn.added {
+  background-color: #25d366;
+  color: white;
+}
+
+/* 爱情故事板块 */
+.stories-section {
+  background-color: #fff;
+  padding: 2rem 0;
+}
+
+/* 添加故事按钮 */
+#add-story-btn {
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(255, 75, 87, 0.2);
+}
+
+#add-story-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(255, 75, 87, 0.3);
+}
+
+/* 故事卡片 */
+.story-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.story-header {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f1f2f6;
+}
+
+.story-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.story-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.edit-story,
+.delete-story {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #a4b0be;
+  transition: color 0.2s;
+}
+
+.edit-story:hover {
+  color: #3742fa;
+}
+
+.delete-story:hover {
+  color: #ff6b81;
+}
+
+.expand-icon {
+  color: var(--primary);
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.story-content {
+  padding: 1rem;
+}
+
+.story-content p {
+  margin-top: 1rem;
+  line-height: 1.8;
+}
+
+.story-image img {
+  width: 100%;
+  border-radius: 8px;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+/* 图片滑动器样式 */
+.story-images-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.slider-container {
+  display: flex;
+  transition: transform 0.5s ease;
+  height: 400px;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s;
+}
+
+.slider-btn:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.slider-btn.prev {
+  left: 10px;
+}
+
+.slider-btn.next {
+  right: 10px;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: white;
+}
+
+/* 故事模态窗口 */
+.max-h-90vh {
+  max-height: 90vh;
+}
+
+/* 图片预览样式 */
+.preview-image {
+  position: relative;
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+/* 留言墙 */
+.message-wall {
+  background-color: #fff5f6;
+  padding: 2rem 0;
+}
+
+.message-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.message-form input,
+.message-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid #f1f2f6;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.message-form input:focus,
+.message-form textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.message-form textarea {
+  height: 120px;
+  resize: none;
+}
+
+.submit-btn {
+  width: 100%;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+/* 电子贺卡区域 */
+.ecard-section {
+  background-color: #fff;
+  padding: 2rem 0;
+}
+
+.ecard-creator {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1.5rem;
+}
+
+.ecard-templates h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.template-item {
+  cursor: pointer;
+  border: 3px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.template-item:hover {
+  transform: translateY(-5px);
+}
+
+.template-item.active {
+  border-color: var(--primary);
+}
+
+.template-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.ecard-editor {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.ecard-preview {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 1rem;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.ecard-content {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ecard-image {
+  position: relative;
+  height: 250px;
+}
+
+.ecard-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upload-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+
+.upload-overlay:hover {
+  opacity: 1;
+}
+
+.upload-overlay i {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.ecard-message {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.ecard-message textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  resize: none;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.ecard-message textarea:focus {
+  outline: none;
+}
+
+.ecard-send-form {
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+
+.ecard-send-form input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid #f1f2f6;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.ecard-send-form input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.custom-sender-option {
+  margin-bottom: 1rem;
+}
+
+.help-text {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.help-text small {
+  color: #a4b0be;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.send-btn {
+  width: 100%;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.send-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+/* 底部栏 */
+.footer {
+  background-color: #2f3542;
+  color: white;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-links a {
+  color: white;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: var(--secondary);
+}
+
+/* 音乐播放器 */
+.music-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 50;
+}
+
+#music-toggle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#music-toggle:hover {
+  transform: scale(1.1);
+}
+
+#music-toggle.playing {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 129, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 107, 129, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 129, 0);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+
+  .ecard-creator {
+    grid-template-columns: 1fr;
+  }
+
+  .ecard-editor {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>情人节快乐</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- 顶部导航栏 -->
+  <nav class="navbar">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="logo">
+        <h1>浪漫时光</h1>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="nav-item">首页</a>
+        <a href="#gifts" class="nav-item">礼物推荐</a>
+        <a href="#stories" class="nav-item">爱情故事</a>
+        <a href="#wall" class="nav-item">留言墙</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 主视觉区域 -->
+  <section class="hero-section">
+    <div class="container mx-auto px-4 text-center relative">
+      <h1 class="main-title" data-aos="fade-up">情侣纪念日</h1>
+      <p class="subtitle" data-aos="fade-up" data-aos-delay="200">爱，让每一刻都闪闪发光</p>
+      <div class="hearts-animation"></div>
+    </div>
+  </section>
+
+  <!-- 礼物推荐板块 -->
+  <section id="gifts" class="gifts-section">
+    <div class="container mx-auto px-4 py-12">
+      <h2 class="section-title" data-aos="fade-up">浪漫礼物推荐</h2>
+      <div class="gift-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+        <!-- 礼物卡片1 -->
+        <div class="gift-card" data-aos="fade-right">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="images/gifts/gift1.webp" alt="定制项链">
+              <h3>定制情侣项链</h3>
+              <p class="price">¥299</p>
+            </div>
+            <div class="card-back">
+              <p>这款定制项链，将你们的名字刻在一起，让爱永恒闪耀</p>
+              <button class="wishlist-btn">加入心愿单</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 礼物卡片2 -->
+        <div class="gift-card" data-aos="fade-up">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="images/gifts/gift2.jpg" alt="玫瑰花束">
+              <h3>永生玫瑰礼盒</h3>
+              <p class="price">¥399</p>
+            </div>
+            <div class="card-back">
+              <p>精选永生玫瑰，象征永不凋零的爱情，浪漫与美丽常伴</p>
+              <button class="wishlist-btn">加入心愿单</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 礼物卡片3 -->
+        <div class="gift-card" data-aos="fade-left">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="images/gifts/gift3.jpg" alt="定制相册">
+              <h3>定制爱情相册</h3>
+              <p class="price">¥199</p>
+            </div>
+            <div class="card-back">
+              <p>记录你们的美好瞬间，每一页都承载着甜蜜回忆</p>
+              <button class="wishlist-btn">加入心愿单</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 爱情故事板块 -->
+  <section id="stories" class="stories-section">
+    <div class="container mx-auto px-4 py-12">
+      <h2 class="section-title" data-aos="fade-up">感人爱情故事</h2>
+
+      <!-- 添加故事按钮 -->
+      <div class="text-center mb-6" data-aos="fade-up">
+        <button id="add-story-btn" class="px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-all">
+          <i class="fa fa-plus mr-2"></i>分享您的爱情故事
+        </button>
+      </div>
+
+      <!-- 故事列表容器 -->
+      <div class="stories-container mt-8">
+        <!-- 故事卡片会通过JavaScript动态加载 -->
+      </div>
+
+      <!-- 故事表单弹窗 -->
+      <div id="story-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+        <div class="bg-white rounded-lg p-6 max-w-lg w-full max-h-90vh overflow-y-auto">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold" id="story-modal-title">添加爱情故事</h3>
+            <button class="close-modal text-gray-500 hover:text-gray-700">
+              <i class="fa fa-times"></i>
+            </button>
+          </div>
+
+          <form id="story-form" class="space-y-4">
+            <input type="hidden" id="story-id">
+
+            <div>
+              <label for="story-title" class="block mb-1">故事标题</label>
+              <input type="text" id="story-title" class="w-full px-3 py-2 border rounded" required>
+            </div>
+
+            <div>
+              <label for="story-content" class="block mb-1">故事内容</label>
+              <textarea id="story-content" class="w-full px-3 py-2 border rounded h-32" required></textarea>
+            </div>
+
+            <div>
+              <label class="block mb-1">故事图片</label>
+              <div class="flex items-center space-x-2 mb-2">
+                <button type="button" id="upload-story-images" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">
+                  <i class="fa fa-upload mr-2"></i>上传图片
+                </button>
+                <span class="text-sm text-gray-500">可上传多张图片</span>
+              </div>
+              <input type="file" id="story-images-input" multiple accept="image/*" class="hidden">
+
+              <!-- 图片预览区域 -->
+              <div id="story-images-preview" class="flex flex-wrap gap-2 mt-2">
+                <!-- 预览图片将在这里显示 -->
+              </div>
+            </div>
+
+            <div class="flex justify-end space-x-3 mt-4">
+              <button type="button" class="px-4 py-2 border rounded hover:bg-gray-100 close-modal">取消</button>
+              <button type="submit" class="px-4 py-2 bg-pink-500 text-white rounded hover:bg-pink-600">保存</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- 删除确认弹窗 -->
+      <div id="delete-confirm"
+        class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+        <div class="bg-white rounded-lg p-6 max-w-sm w-full">
+          <h3 class="text-xl font-bold mb-4">确认删除</h3>
+          <p>确定要删除这个爱情故事吗？此操作无法撤销。</p>
+          <div class="flex justify-end space-x-3 mt-6">
+            <button id="cancel-delete" class="px-4 py-2 border rounded hover:bg-gray-100">取消</button>
+            <button id="confirm-delete" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">删除</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 留言墙板块 -->
+  <section id="wall" class="message-wall">
+    <div class="container mx-auto px-4 py-12">
+      <h2 class="section-title" data-aos="fade-up">爱的留言墙</h2>
+      <div class="message-form-container" data-aos="fade-up">
+        <form id="message-form" class="message-form">
+          <input type="text" placeholder="你的名字" required>
+          <textarea placeholder="写下你的爱情宣言或祝福..." required></textarea>
+          <button type="submit" class="submit-btn">发布留言</button>
+        </form>
+      </div>
+
+      <div class="messages-container mt-8">
+        <!-- 留言内容将通过JavaScript加载 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 电子贺卡区域 -->
+  <section id="ecard" class="ecard-section">
+    <div class="container mx-auto px-4 py-12">
+      <h2 class="section-title" data-aos="fade-up">发送专属电子贺卡</h2>
+      <div class="ecard-creator" data-aos="fade-up">
+        <div class="ecard-templates">
+          <h3>选择模板</h3>
+          <div class="templates-container grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="template-item active">
+              <img src="images/templates/template1.jpg" alt="贺卡模板1">
+            </div>
+            <div class="template-item">
+              <img src="images/templates/template2.jpg" alt="贺卡模板2">
+            </div>
+            <div class="template-item">
+              <img src="images/templates/template3.jpg" alt="贺卡模板3">
+            </div>
+          </div>
+        </div>
+
+        <div class="ecard-editor">
+          <div class="ecard-preview">
+            <div class="ecard-content">
+              <div class="ecard-image">
+                <img src="images/ecard/preview.jpg" alt="贺卡预览">
+                <div class="upload-overlay">
+                  <i class="fa fa-upload"></i>
+                  <p>点击上传照片</p>
+                  <input type="file" id="card-image" accept="image/*" hidden>
+                </div>
+              </div>
+              <div class="ecard-message">
+                <textarea placeholder="在这里写下您的祝福语..." id="card-message"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="ecard-send-form">
+            <input type="email" placeholder="收件人邮箱" required>
+            <input type="text" placeholder="您的姓名" required>
+
+            <div class="custom-sender-option">
+              <label class="flex items-center">
+                <input type="checkbox" id="use-custom-sender"> 使用自定义发件邮箱
+              </label>
+            </div>
+
+            <div id="custom-sender-fields" style="display: none;">
+              <input type="email" placeholder="发件人邮箱" id="sender-email">
+              <input type="password" placeholder="邮箱授权码/密码" id="sender-password">
+              <div class="help-text">
+                <small>* 对于QQ邮箱，请使用授权码而不是密码</small>
+                <small>* 您的邮箱信息仅用于发送邮件，不会被保存</small>
+                <small>* 发件人邮箱必须与您的登录邮箱一致，这是邮件服务器的安全要求</small>
+              </div>
+            </div>
+
+            <button type="submit" class="send-btn">发送贺卡</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部栏 -->
+  <footer class="footer">
+    <div class="container mx-auto px-4 py-6">
+      <div class="footer-content">
+        <div class="copyright">
+          <p>© 2025 浪漫时光 | 情人节特别版</p>
+        </div>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-weixin"></i></a>
+          <a href="#"><i class="fab fa-weibo"></i></a>
+          <a href="#"><i class="fab fa-qq"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 音乐播放器 -->
+  <div class="music-player">
+    <button id="music-toggle">
+      <i class="fa fa-music"></i>
+    </button>
+    <audio id="bgm" loop>
+      <source src="audio/romantic-music.mp3" type="audio/mp3">
+    </audio>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

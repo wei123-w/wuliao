@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>浪漫时光 - 注册</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="login.css">
+</head>
+
+<body class="login-body">
+  <div class="container mx-auto px-4 h-screen flex items-center justify-center">
+    <div class="login-card register-card">
+      <div class="login-header text-center mb-6">
+        <h1 class="text-3xl font-bold text-pink-600">浪漫时光</h1>
+        <p class="text-gray-600 mt-2">情人节特别版 - 注册账号</p>
+      </div>
+
+      <div class="login-form">
+        <div id="register-error" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          <p id="error-message">注册失败，请检查您的输入</p>
+        </div>
+
+        <div class="mb-4">
+          <label for="username" class="block text-gray-700 mb-2">用户名</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+              <i class="fas fa-user text-pink-500"></i>
+            </span>
+            <input type="text" id="username"
+              class="w-full py-2 pl-10 pr-3 border rounded-lg focus:outline-none focus:border-pink-500"
+              placeholder="请输入用户名">
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700 mb-2">邮箱</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+              <i class="fas fa-envelope text-pink-500"></i>
+            </span>
+            <input type="email" id="email"
+              class="w-full py-2 pl-10 pr-3 border rounded-lg focus:outline-none focus:border-pink-500"
+              placeholder="请输入邮箱">
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="fullName" class="block text-gray-700 mb-2">姓名</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+              <i class="fas fa-id-card text-pink-500"></i>
+            </span>
+            <input type="text" id="fullName"
+              class="w-full py-2 pl-10 pr-3 border rounded-lg focus:outline-none focus:border-pink-500"
+              placeholder="请输入您的姓名">
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="block text-gray-700 mb-2">密码</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+              <i class="fas fa-lock text-pink-500"></i>
+            </span>
+            <input type="password" id="password"
+              class="w-full py-2 pl-10 pr-3 border rounded-lg focus:outline-none focus:border-pink-500"
+              placeholder="请输入密码">
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <label for="confirmPassword" class="block text-gray-700 mb-2">确认密码</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+              <i class="fas fa-lock text-pink-500"></i>
+            </span>
+            <input type="password" id="confirmPassword"
+              class="w-full py-2 pl-10 pr-3 border rounded-lg focus:outline-none focus:border-pink-500"
+              placeholder="请再次输入密码">
+          </div>
+        </div>
+
+        <button id="register-btn"
+          class="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-2 rounded-lg hover:from-pink-600 hover:to-red-600 transition duration-300 flex items-center justify-center">
+          <span>注册账号</span>
+          <i class="fas fa-user-plus ml-2"></i>
+        </button>
+
+        <div class="mt-6 text-center">
+          <p class="text-gray-600">已有账号？ <a href="login.html" class="text-pink-600 hover:text-pink-800">返回登录</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hearts-container"></div>
+
+  <script src="register.js"></script>
+</body>
+
+</html>
